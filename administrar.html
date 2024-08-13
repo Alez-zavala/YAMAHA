@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Productos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000; /* Fondo negro */
+            color: #ffffff; /* Color de texto blanco */
+            overflow: hidden; /* Evita el scroll debido a la animación */
+        }
+
+        header {
+            background: linear-gradient(to right, #000000, #001f3f); /* Negro mezclado con azul oscuro */
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2; /* Asegura que el encabezado esté encima del efecto de Matrix */
+        }
+
+        .search-container {
+            position: absolute;
+            right: 20px;
+            top: 10px; /* Ajustado para estar encima del encabezado */
+            z-index: 3; /* Asegura que el buscador esté encima del efecto de Matrix */
+        }
+
+        .search-container input {
+            padding: 5px;
+            font-size: 0.4em; /* Aumentado el tamaño del buscador */
+            border-radius: 5px;
+            border: 1px solid #555555; /* Borde gris oscuro */
+            background-color: #000000; /* Fondo negro */
+            color: #ffffff; /* Texto blanco */
+        }
+
+        .search-container input::placeholder {
+            color: #aaaaaa; /* Placeholder gris claro */
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #000000; /* Fondo negro para el contenedor */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2; /* Asegura que el contenido esté encima del efecto de Matrix */
+            max-height: 80vh; /* Limita la altura máxima del contenedor para permitir el scroll */
+            overflow-y: auto; /* Habilita el scroll vertical */
+        }
+
+        .back-link {
+            display: block;
+            margin: 20px auto; /* Movido arriba de los productos */
+            font-size: 1.1em;
+            color: #ffffff; /* Azul oscuro para el botón de regreso */
+            text-decoration: none;
+            text-align: center;
+            background-color: #001f3f; /* Azul oscuro para el fondo del botón */
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-link:hover {
+            background-color: #000000; /* Negro para el hover */
+            text-decoration: underline;
+        }
+
+        .product-list {
+            background-color: #000000; /* Fondo negro para la lista de productos */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+            gap: 20px; /* Espacio entre los productos */
+        }
+
+        .product-item {
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            background-color: #111111; /* Fondo oscuro para los items de productos */
+        }
+
+        .product-item h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .product-item p {
+            margin: 5px 0;
+        }
+
+        .product-item a {
+            text-decoration: none;
+            color: #ffffff; /* Color del texto */
+            font-size: 0.9em;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .product-item a:hover {
+            text-decoration: underline;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Asegura que el canvas esté detrás del encabezado y el contenido */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Productos
+        <div class="search-container">
+            <input type="text" id="searchBox" placeholder="Buscar...">
+        </div>
+    </header>
+    <div class="container">
+        <a href="panel.html" class="back-link">Regresar al Panel de Administrador</a>
+        <div class="product-list" id="productList">
+            <!-- Los productos se cargarán aquí -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const productList = document.getElementById('productList');
+            const searchBox = document.getElementById('searchBox');
+            let products = JSON.parse(localStorage.getItem('products')) || [];
+
+            function displayProducts(filteredProducts) {
+                productList.innerHTML = '';
+                if (filteredProducts.length > 0) {
+                    filteredProducts.forEach((product, index) => {
+                        const productItem = document.createElement('div');
+                        productItem.classList.add('product-item');
+                        
+                        productItem.innerHTML = `
+                            <h3>${product.name}</h3>
+                            <p><img src="${product.image}" alt="${product.name}" style="max-width: 100%;"></p>
+                            <p><a href="detalle.html?productId=${index}">Ver Detalles</a></p>
+                            <p><a href="modificar.html?productId=${index}">Editar</a></p>
+                            <p><a href="#" onclick="deleteProduct(${index})">Eliminar</a></p>
+                        `;
+                        productList.appendChild(productItem);
+                    });
+                } else {
+                    productList.innerHTML = '<p>No hay productos disponibles.</p>';
+                }
+            }
+
+            displayProducts(products);
+
+            searchBox.addEventListener('input', function() {
+                const searchTerm = searchBox.value.toLowerCase();
+                const filteredProducts = products.filter(product => 
+                    product.name.toLowerCase().includes(searchTerm)
+                );
+                displayProducts(filteredProducts);
+            });
+        });
+
+        function deleteProduct(index) {
+            if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+                let products = JSON.parse(localStorage.getItem('products')) || [];
+                products.splice(index, 1);
+                localStorage.setItem('products', JSON.stringify(products));
+                alert('Producto eliminado exitosamente.');
+                location.reload();
+            }
+        }
+    </script>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <script>
+        // Configuración del canvas de animación de Matrix en el fondo
+        const matrixCanvas = document.getElementById('matrixCanvas');
+        const matrixCtx = matrixCanvas.getContext('2d');
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+
+        const matrixCharacters = '01';
+        const matrixFontSize = 16;
+        const matrixColumns = matrixCanvas.width / matrixFontSize;
+        const matrixDrops = Array(Math.floor(matrixColumns)).fill(1);
+        let matrixColors = ['#600000', '#000060', '#400040', '#555555']; // Colores más oscuros
+
+        function drawMatrix() {
+            matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Suaviza el efecto de "desvanecimiento"
+            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+            matrixCtx.fillStyle = '#0F0'; // Color de los números
+            matrixCtx.font = `${matrixFontSize}px monospace`;
+
+            for (let i = 0; i < matrixDrops.length; i++) {
+                const text = matrixCharacters[Math.floor(Math.random() * matrixCharacters.length)];
+                const x = i * matrixFontSize;
+                const y = matrixDrops[i] * matrixFontSize;
+
+                matrixCtx.fillStyle = matrixColors[Math.floor(Math.random() * matrixColors.length)]; // Color aleatorio
+                matrixCtx.fillText(text, x, y);
+
+                if (y > matrixCanvas.height && Math.random() > 0.975) {
+                    matrixDrops[i] = 0;
+                }
+
+                matrixDrops[i]++;
+            }
+        }
+
+        function updateMatrixColors() {
+            matrixColors = ['#600000', '#000060', '#400040', '#555555']; // Colores más oscuros
+        }
+
+        setInterval(updateMatrixColors, 5000); // Cambia los colores cada 5 segundos
+        setInterval(drawMatrix, 50); // Redibuja cada 50ms
+
+        window.addEventListener('resize', function() {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

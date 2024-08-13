@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAMAHA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita el scroll debido a la animación */
+            background: black; /* Fondo negro */
+        }
+
+        header {
+            background: linear-gradient(to right, #000000, #001f3f); /* Negro mezclado con azul oscuro */
+            color: #ffffff;
+            padding: 20px;
+            text-align: left;
+            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2; /* Asegura que el encabezado esté encima del efecto de Matrix */
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px; /* Espacio entre el logo y el texto */
+        }
+
+        .logo {
+            width: 60px; /* Tamaño del logo */
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease; /* Animación para el crecimiento del logo */
+        }
+
+        .logo-container:hover .logo {
+            transform: scale(1.1); /* Aumento del tamaño del logo */
+        }
+
+        .logo-text {
+            position: absolute;
+            top: 50%;
+            left: 100%; /* Posición inicial fuera de la vista a la derecha del logo */
+            transform: translateX(10px) translateY(-50%); /* Alinea verticalmente al centro del logo */
+            white-space: nowrap;
+            color: #ffffff;
+            background: #001f3f;
+            padding: 0; /* Elimina el padding para hacer el texto más compacto */
+            border-radius: 5px;
+            font-size: 0.8em; /* Ajusta el tamaño del texto */
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            overflow: hidden;
+            transition: transform 1s ease, opacity 1s ease; /* Transición suave para el deslizamiento del texto */
+            z-index: 10; /* Asegura que el texto esté encima del logo */
+            opacity: 0; /* Inicialmente oculto */
+            letter-spacing: -1px; /* Reducción máxima del espaciado entre letras */
+        }
+
+        .logo-container:hover .logo-text {
+            transform: translateX(0) translateY(-50%); /* Muestra el texto al pasar el cursor */
+            opacity: 1; /* Muestra el texto */
+        }
+
+        .letter {
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.1s ease; /* Transición suave para la aparición de las letras */
+        }
+
+        .logo-container:hover .letter {
+            animation: pixelate 1s forwards; /* Animación para revelar las letras */
+        }
+
+        @keyframes pixelate {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .panel-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 5px 10px;
+            background-color: #001f3f; /* Azul oscuro para los botones */
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.8em; /* Tamaño pequeño */
+            transition: background-color 0.3s;
+        }
+
+        .panel-link:hover {
+            background-color: #000000; /* Negro para el hover */
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 productos por fila */
+            gap: 10px; /* Reduce el espacio entre productos */
+            padding: 20px;
+            position: relative; /* Asegura que la cuadrícula de productos esté encima del canvas */
+            z-index: 2;
+        }
+
+        .product {
+            background-color: #000000; /* Negro para el fondo del producto */
+            border: 2px solid #001f3f; /* Borde azul oscuro para el producto */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+            padding: 10px; /* Ajusta el padding para hacer el producto más pequeño */
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            border-color: #ffffff; /* Cambia el borde a blanco al pasar el mouse */
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+
+        .product h2 {
+            font-size: 0.8em; /* Reduce el tamaño del texto del nombre del producto */
+            color: #ffffff;
+            margin: 5px 0; /* Reduce el margen */
+        }
+
+        /* Estilo para el canvas de fondo */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Asegura que el canvas esté detrás del encabezado y el contenido */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="https://i.pinimg.com/564x/ea/c0/34/eac03489ac2fba52111cfc24b61693b4.jpg" alt="Logo Yamaha" class="logo">
+            <div class="logo-text">
+                <!-- Texto de la marca con efecto píxel -->
+                <span class="letter">Y</span>
+                <span class="letter">a</span>
+                <span class="letter">m</span>
+                <span class="letter">a</span>
+                <span class="letter">h</span>
+                <span class="letter">a</span>
+                <span class="letter"> </span>
+                <span class="letter">M</span>
+                <span class="letter">o</span>
+                <span class="letter">t</span>
+                <span class="letter">o</span>
+                <span class="letter">r</span>
+                <span class="letter"> </span>
+                <span class="letter">C</span>
+                <span class="letter">o</span>
+                <span class="letter">m</span>
+                <span class="letter">p</span>
+                <span class="letter">a</span>
+                <span class="letter">n</span>
+                <span class="letter">y</span>
+            </div>
+        </div>
+        <a href="login.html" class="panel-link">Admin</a>
+    </header>
+
+    <div class="product-grid" id="productList">
+        <!-- Productos se cargarán aquí -->
+    </div>
+
+    <canvas id="matrixCanvas"></canvas>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const productList = document.getElementById('productList');
+            let products = JSON.parse(localStorage.getItem('products')) || [];
+
+            productList.innerHTML = products.map((product, index) => `
+                <div class="product">
+                    <a href="detalle.html?productId=${index}">
+                        <img src="${product.image}" alt="${product.name}">
+                        <h2>${product.name}</h2>
+                    </a>
+                </div>
+            `).join('');
+        });
+
+        // Configuración del canvas de animación de Matrix en el fondo
+        const matrixCanvas = document.getElementById('matrixCanvas');
+        const matrixCtx = matrixCanvas.getContext('2d');
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+
+        const matrixCharacters = '01';
+        const matrixFontSize = 16;
+        const matrixColumns = matrixCanvas.width / matrixFontSize;
+        const matrixDrops = Array(Math.floor(matrixColumns)).fill(1);
+        let matrixColors = ['#600000', '#000060', '#400040', '#555555']; // Colores más oscuros
+
+        function drawMatrix() {
+            matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Suaviza el efecto de "desvanecimiento"
+            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+            matrixCtx.fillStyle = '#0F0'; // Color de los números
+            matrixCtx.font = `${matrixFontSize}px monospace`;
+
+            for (let i = 0; i < matrixDrops.length; i++) {
+                const text = matrixCharacters[Math.floor(Math.random() * matrixCharacters.length)];
+                const x = i * matrixFontSize;
+                const y = matrixDrops[i] * matrixFontSize;
+
+                matrixCtx.fillStyle = matrixColors[Math.floor(Math.random() * matrixColors.length)]; // Color aleatorio
+                matrixCtx.fillText(text, x, y);
+
+                if (y > matrixCanvas.height && Math.random() > 0.975) {
+                    matrixDrops[i] = 0;
+                }
+
+                matrixDrops[i]++;
+            }
+        }
+
+        function updateMatrixColors() {
+            matrixColors = ['#600000', '#000060', '#400040', '#555555']; // Colores más oscuros
+        }
+
+        setInterval(updateMatrixColors, 5000); // Cambia los colores cada 5 segundos
+        setInterval(drawMatrix, 50); // Redibuja cada 50ms
+
+        window.addEventListener('resize', () => {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
