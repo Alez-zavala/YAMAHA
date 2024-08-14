@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,12 +11,12 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Evita el scroll debido a la animación */
-            background: black; /* Fondo negro */
+            overflow: hidden;
+            background: black;
         }
-        
+
         header {
-            background: linear-gradient(to right, #000000, #212222); /* Negro mezclado con azul oscuro */
+            background: linear-gradient(to right, #000000, #212222);
             color: #ffffff;
             padding: 20px;
             text-align: left;
@@ -24,99 +25,275 @@
             font-weight: 700;
             letter-spacing: 1px;
             position: relative;
-            z-index: 2; /* Asegura que el encabezado esté encima del efecto de Matrix */
+            z-index: 2;
         }
 
         .logo-container {
             position: relative;
             display: inline-block;
-            margin-right: 10px; /* Espacio entre el logo y el texto */
+            margin-right: 10px;
         }
 
         .logo {
-            width: 60px; /* Tamaño del logo */
+            width: 60px;
             height: auto;
             display: block;
-            transition: transform 0.3s ease; /* Animación para el crecimiento del logo */
+            transition: transform 0.3s ease;
         }
 
         .logo-container:hover .logo {
-            transform: scale(1.1); /* Aumento del tamaño del logo */
+            transform: scale(1.1);
         }
 
         .logo-text {
             position: absolute;
             top: 50%;
-            left: 100%; /* Posición inicial fuera de la vista a la derecha del logo */
-            transform: translateX(10px) translateY(-50%); /* Alinea verticalmente al centro del logo */
+            left: 100%;
+            transform: translateX(10px) translateY(-50%);
             white-space: nowrap;
             color: #ffffff;
             background: #000000;
-            padding: 0; /* Elimina el padding para hacer el texto más compacto */
+            padding: 0;
             border-radius: 5px;
-            font-size: 0.8em; /* Ajusta el tamaño del texto */
+            font-size: 0.7em;
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             overflow: hidden;
-            z-index: 10; /* Asegura que el texto esté encima del logo */
-            opacity: 1; /* Asegura que el texto sea visible */
-            letter-spacing: -1px; /* Reducción máxima del espaciado entre letras */
+            z-index: 10;
+            opacity: 1;
+            letter-spacing: -1px;
         }
 
+        /* Menú de enlaces */
+        .menu {
+            display: inline-block;
+            margin-left: 150px; /* Ajuste del margen para mover el menú */
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .menu a {
+            color: #afaeae;
+            text-decoration: none;
+            margin-left: 10px;
+            font-size: 0.3em; /* Tamaño de fuente más pequeño */
+            text-transform: uppercase; /* Texto en mayúsculas */
+            letter-spacing: 0.3px; /* Espaciado reducido */
+            font-weight: normal; /* Sin negrita */
+            position: relative; /* Posicionamiento relativo para submenú */
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* Menú desplegable "NUESTROS MODELOS" */
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%; /* Alinea el submenú justo debajo del enlace "NUESTROS MODELOS" */
+            left: 0;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            white-space: nowrap;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+
+        .submenu a:hover {
+            background-color: #212222;
+        }
+
+        /* Submenú en "MOTOCICLETAS" que se despliega hacia la derecha */
+        .submenu-right {
+            display: none;
+            position: absolute;
+            top: 0; /* Alinea verticalmente con el menú principal */
+            left: 100%;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+            width: 220px; /* Ancho del submenú ajustado */
+            white-space: normal; /* Permite el salto de línea */
+        }
+
+        .submenu-right a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+            word-wrap: break-word; /* Permite el salto de línea en palabras largas */
+        }
+
+        .submenu-right a:hover {
+            background-color: #212222;
+        }
+
+        /* Submenú en "TUS MOTOCICLETAS" que se despliega a la derecha */
+        .submenu-right-right {
+            display: none;
+            position: absolute;
+            top: 0; /* Alinea verticalmente con el submenú de "MOTOCICLETAS" */
+            left: 100%;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 4;
+            width: 220px; /* Ancho del submenú ajustado */
+            white-space: normal; /* Permite el salto de línea */
+        }
+
+        .submenu-right-right a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+            word-wrap: break-word; /* Permite el salto de línea en palabras largas */
+        }
+
+        .submenu-right-right a:hover {
+            background-color: #212222;
+        }
+
+        /* Submenú en "SCOOTERS" que se despliega hacia la derecha */
+        .submenu-scooters {
+            display: none;
+            position: absolute;
+            top: 0; /* Alinea verticalmente con el menú principal */
+            left: 100%;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+            width: 220px; /* Ancho del submenú ajustado */
+            white-space: normal; /* Permite el salto de línea */
+        }
+
+        .submenu-scooters a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+            word-wrap: break-word; /* Permite el salto de línea en palabras largas */
+        }
+
+        .submenu-scooters a:hover {
+            background-color: #212222;
+        }
+
+        /* Submenú en "EBIKES" que se despliega hacia la derecha */
+        .submenu-ebikes {
+            display: none;
+            position: absolute;
+            top: 0; /* Alinea verticalmente con el menú principal */
+            left: 100%;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+            width: 220px; /* Ancho del submenú ajustado */
+            white-space: normal; /* Permite el salto de línea */
+        }
+
+        .submenu-ebikes a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+            word-wrap: break-word; /* Permite el salto de línea en palabras largas */
+        }
+
+        .submenu-ebikes a:hover {
+            background-color: #212222;
+        }
+
+        /* Mostrar el submenú cuando se hace hover en el enlace "NUESTROS MODELOS" */
+        .menu-item:hover .submenu {
+            display: block;
+        }
+
+        /* Mostrar el submenú cuando se hace hover en el enlace "MOTOCICLETAS" */
+        .menu-item-motocicletas:hover .submenu-right {
+            display: block;
+        }
+
+        /* Mostrar el submenú cuando se hace hover en el enlace "TUS MOTOCICLETAS" */
+        .menu-item-tus-motocicletas:hover .submenu-right-right {
+            display: block;
+        }
+
+        /* Mostrar el submenú cuando se hace hover en el enlace "SCOOTERS" */
+        .menu-item-scooters:hover .submenu-scooters {
+            display: block;
+        }
+
+        /* Mostrar el submenú cuando se hace hover en el enlace "EBIKES" */
+        .menu-item-ebikes:hover .submenu-ebikes {
+            display: block;
+        }
+
+        /* Alineación y estilo de los enlaces del menú */
+        .menu .menu-item {
+            display: inline-block;
+            margin-right: 10px; /* Espacio entre los elementos del menú */
+            position: relative;
+        }
+
+        .menu .menu-item-motocicletas {
+            position: relative;
+        }
+
+        .menu .menu-item-tus-motocicletas {
+            position: relative;
+        }
+
+        .menu .menu-item-scooters {
+            position: relative;
+        }
+
+        .menu .menu-item-ebikes {
+            position: relative;
+        }
+
+        /* Botón de Admin */
         .panel-link {
             position: absolute;
             top: 20px;
             right: 20px;
             padding: 5px 10px;
-            background-color: #000000; /* Azul oscuro para los botones */
+            background-color: #000000;
             color: #ffffff;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 0.8em; /* Tamaño pequeño */
+            font-size: 0.8em;
             transition: background-color 0.3s;
         }
 
         .panel-link:hover {
-            background-color: #000000; /* Negro para el hover */
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr); /* 5 productos por fila */
-            gap: 10px; /* Reduce el espacio entre productos */
-            padding: 20px;
-            position: relative; /* Asegura que la cuadrícula de productos esté encima del canvas */
-            z-index: 2;
-        }
-
-        .product {
-            background-color: #000000; /* Negro para el fondo del producto */
-            border: 2px solid #212222; /* Borde azul oscuro para el producto */
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s;
-            padding: 10px; /* Ajusta el padding para hacer el producto más pequeño */
-            font-size: 0.8em; /* Tamaño del texto del producto más pequeño */
-        }
-
-        .product:hover {
-            transform: scale(1.05);
-            border-color: #ffffff; /* Cambia el borde a blanco al pasar el mouse */
-        }
-
-        .product img {
-            width: auto; /* Ajusta el ancho automáticamente */
-            height: 150px; /* Altura fija para todas las imágenes */
-            object-fit: cover; /* Mantiene la proporción y recorta si es necesario */
-            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
-        }
-
-        .product h2 {
-            font-size: 1.2em; /* Aumenta el tamaño del texto del nombre del producto */
-            color: #ffffff;
-            margin: 10px 0; /* Ajusta el margen */
+            background-color: #333333;
         }
 
         /* Estilo para el canvas de fondo */
@@ -126,43 +303,86 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Asegura que el canvas esté detrás del encabezado y el contenido */
+            z-index: 1;
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="logo-container">
             <img src="https://i.pinimg.com/564x/ea/c0/34/eac03489ac2fba52111cfc24b61693b4.jpg" alt="Logo Yamaha" class="logo">
             <div class="logo-text">
-                <!-- Texto de la marca sin animación -->
                 YAMAHA MOTOR COMPANY
             </div>
         </div>
+        <nav class="menu">
+            <div class="menu-item">
+                <a href="#">NUESTROS MODELOS</a>
+                <div class="submenu">
+                    <div class="menu-item-motocicletas">
+                        <a href="#">MOTOCICLETAS</a>
+                        <div class="submenu-right">
+                            <div class="menu-item-tus-motocicletas">
+                                <a href="#">TUS MOTOCICLETAS</a>
+                                <div class="submenu-right-right">
+                                    <a href="#">SUPER SPORT</a>
+                                    <a href="#">HYPER NAKED</a>
+                                    <a href="#">SPORT HERITAGE</a>
+                                    <a href="#">SPORT TOURING</a>
+                                    <a href="#">ADVENTURE</a>
+                                    <a href="#">OFF ROAD COMPETITION</a>
+                                    <a href="#">125cc</a>
+                                    <a href="#">35 KW</a>
+                                </div>
+                            </div>
+                            <a href="#">SERVICIOS FINANCIEROS</a>
+                            <a href="#">COMPARAR MOTOCICLETAS</a>
+                            <a href="#">SOLICITA UNA PRUEBA DE PRODUCTO</a>
+                            <a href="#">CATÁLOGOS</a>
+                            <a href="#">CAMBIO DE MARCHAS MANUAL AUTOMATIZADO YAMAHA</a>
+                            <a href="#">PROMOCIONES</a>
+                            <a href="#">Yard Built</a>
+                        </div>
+                    </div>
+                    <div class="menu-item-scooters">
+                        <a href="#">SCOOTERS</a>
+                        <div class="submenu-scooters">
+                            <a href="#">TUS SCOOTERS</a>
+                            <a href="#">SOLICITA UNA PRUEBA DE PRODUCTO</a>
+                            <a href="#">PROMOCIONES</a>
+                            <a href="#">CATÁLOGOS</a>
+                        </div>
+                    </div>
+                    <div class="menu-item-ebikes">
+                        <a href="#">EBIKES</a>
+                        <div class="submenu-ebikes">
+                            <a href="#">TUS EBIKES</a>
+                            <a href="#">COMPARAR EBIKES</a>
+                            <a href="#">CÓMO COMPRAR</a>
+                            <a href="#">SOLICITA UNA PRUEBA DE PRODUCTO</a>
+                            <a href="#">CATÁLOGOS</a>
+                        </div>
+                    </div>
+                    <a href="#">MOTORES FUERABORDA</a>
+                    <a href="#">WAVERUNNERS</a>
+                    <a href="#">EMBARCACIONES</a>
+                    <a href="#">ATV & SIDE BY SIDE</a>
+                    <a href="#">VEHÍCULOS LIGEROS</a>
+                    <a href="#">GENERADORES</a>
+                </div>
+            </div>
+            <a href="#">ACCESORIOS</a>
+            <a href="#">ROPA Y ARTÍCULOS</a>
+            <a href="#">EXPERIENCIAS</a>
+            <a href="#">SERVICIOS Y SOPORTE</a>
+        </nav>
         <a href="login.html" class="panel-link">Admin</a>
     </header>
-
-    <div class="product-grid" id="productList">
-        <!-- Productos se cargarán aquí -->
-    </div>
 
     <canvas id="matrixCanvas"></canvas>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const productList = document.getElementById('productList');
-            let products = JSON.parse(localStorage.getItem('products')) || [];
-
-            productList.innerHTML = products.map((product, index) => `
-                <div class="product">
-                    <a href="detalle.html?productId=${index}">
-                        <img src="${product.image}" alt="${product.name}">
-                        <h2>${product.name}</h2>
-                    </a>
-                </div>
-            `).join('');
-        });
-
         // Configuración del canvas de animación de Matrix en el fondo
         const matrixCanvas = document.getElementById('matrixCanvas');
         const matrixCtx = matrixCanvas.getContext('2d');
@@ -176,7 +396,7 @@
         let matrixColors = ['#600000', '#000060', '#400040', '#555555']; // Colores más oscuros
 
         function drawMatrix() {
-            matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Suaviza el efecto de "desvanecimiento"
+            matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
 
             matrixCtx.fillStyle = '#0F0'; // Color de los números
@@ -187,7 +407,7 @@
                 const x = i * matrixFontSize;
                 const y = matrixDrops[i] * matrixFontSize;
 
-                matrixCtx.fillStyle = matrixColors[Math.floor(Math.random() * matrixColors.length)]; // Color aleatorio
+                matrixCtx.fillStyle = matrixColors[Math.floor(Math.random() * matrixColors.length)];
                 matrixCtx.fillText(text, x, y);
 
                 if (y > matrixCanvas.height && Math.random() > 0.975) {
@@ -199,11 +419,11 @@
         }
 
         function updateMatrixColors() {
-            matrixColors = ['#600000', '#000060', '#400040', '#555555']; // Colores más oscuros
+            matrixColors = ['#600000', '#000060', '#400040', '#555555'];
         }
 
-        setInterval(updateMatrixColors, 5000); // Cambia los colores cada 5 segundos
-        setInterval(drawMatrix, 50); // Redibuja cada 50ms
+        setInterval(updateMatrixColors, 5000);
+        setInterval(drawMatrix, 50);
 
         window.addEventListener('resize', () => {
             matrixCanvas.width = window.innerWidth;
@@ -211,4 +431,5 @@
         });
     </script>
 </body>
+
 </html>
