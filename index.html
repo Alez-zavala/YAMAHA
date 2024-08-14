@@ -13,9 +13,9 @@
             overflow: hidden; /* Evita el scroll debido a la animación */
             background: black; /* Fondo negro */
         }
-
+        
         header {
-            background: linear-gradient(to right, #000000, #001f3f); /* Negro mezclado con azul oscuro */
+            background: linear-gradient(to right, #000000, #212222); /* Negro mezclado con azul oscuro */
             color: #ffffff;
             padding: 20px;
             text-align: left;
@@ -51,41 +51,16 @@
             transform: translateX(10px) translateY(-50%); /* Alinea verticalmente al centro del logo */
             white-space: nowrap;
             color: #ffffff;
-            background: #001f3f;
+            background: #000000;
             padding: 0; /* Elimina el padding para hacer el texto más compacto */
             border-radius: 5px;
             font-size: 0.8em; /* Ajusta el tamaño del texto */
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             overflow: hidden;
-            transition: transform 1s ease, opacity 1s ease; /* Transición suave para el deslizamiento del texto */
             z-index: 10; /* Asegura que el texto esté encima del logo */
-            opacity: 0; /* Inicialmente oculto */
+            opacity: 1; /* Asegura que el texto sea visible */
             letter-spacing: -1px; /* Reducción máxima del espaciado entre letras */
-        }
-
-        .logo-container:hover .logo-text {
-            transform: translateX(0) translateY(-50%); /* Muestra el texto al pasar el cursor */
-            opacity: 1; /* Muestra el texto */
-        }
-
-        .letter {
-            display: inline-block;
-            opacity: 0;
-            transition: opacity 0.1s ease; /* Transición suave para la aparición de las letras */
-        }
-
-        .logo-container:hover .letter {
-            animation: pixelate 1s forwards; /* Animación para revelar las letras */
-        }
-
-        @keyframes pixelate {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
         }
 
         .panel-link {
@@ -93,7 +68,7 @@
             top: 20px;
             right: 20px;
             padding: 5px 10px;
-            background-color: #001f3f; /* Azul oscuro para los botones */
+            background-color: #000000; /* Azul oscuro para los botones */
             color: #ffffff;
             text-decoration: none;
             border-radius: 5px;
@@ -116,13 +91,14 @@
 
         .product {
             background-color: #000000; /* Negro para el fondo del producto */
-            border: 2px solid #001f3f; /* Borde azul oscuro para el producto */
+            border: 2px solid #212222; /* Borde azul oscuro para el producto */
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             text-align: center;
             transition: transform 0.3s;
             padding: 10px; /* Ajusta el padding para hacer el producto más pequeño */
+            font-size: 0.8em; /* Tamaño del texto del producto más pequeño */
         }
 
         .product:hover {
@@ -131,14 +107,16 @@
         }
 
         .product img {
-            width: 100%;
-            height: auto;
+            width: auto; /* Ajusta el ancho automáticamente */
+            height: 150px; /* Altura fija para todas las imágenes */
+            object-fit: cover; /* Mantiene la proporción y recorta si es necesario */
+            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
         }
 
         .product h2 {
-            font-size: 0.8em; /* Reduce el tamaño del texto del nombre del producto */
+            font-size: 1.2em; /* Aumenta el tamaño del texto del nombre del producto */
             color: #ffffff;
-            margin: 5px 0; /* Reduce el margen */
+            margin: 10px 0; /* Ajusta el margen */
         }
 
         /* Estilo para el canvas de fondo */
@@ -157,27 +135,8 @@
         <div class="logo-container">
             <img src="https://i.pinimg.com/564x/ea/c0/34/eac03489ac2fba52111cfc24b61693b4.jpg" alt="Logo Yamaha" class="logo">
             <div class="logo-text">
-                <!-- Texto de la marca con efecto píxel -->
-                <span class="letter">Y</span>
-                <span class="letter">a</span>
-                <span class="letter">m</span>
-                <span class="letter">a</span>
-                <span class="letter">h</span>
-                <span class="letter">a</span>
-                <span class="letter"> </span>
-                <span class="letter">M</span>
-                <span class="letter">o</span>
-                <span class="letter">t</span>
-                <span class="letter">o</span>
-                <span class="letter">r</span>
-                <span class="letter"> </span>
-                <span class="letter">C</span>
-                <span class="letter">o</span>
-                <span class="letter">m</span>
-                <span class="letter">p</span>
-                <span class="letter">a</span>
-                <span class="letter">n</span>
-                <span class="letter">y</span>
+                <!-- Texto de la marca sin animación -->
+                YAMAHA MOTOR COMPANY
             </div>
         </div>
         <a href="login.html" class="panel-link">Admin</a>

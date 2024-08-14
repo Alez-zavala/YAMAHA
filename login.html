@@ -10,13 +10,14 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000000; /* Fondo negro */
+            background: black; /* Fondo negro */
             color: #ffffff; /* Color de texto blanco */
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
+            position: relative; /* Necesario para el canvas de fondo */
         }
 
         .login-container {
@@ -27,6 +28,8 @@
             width: 100%;
             max-width: 400px;
             text-align: center;
+            position: relative; /* Asegura que el contenido esté encima del canvas */
+            z-index: 2; /* Asegura que el contenido esté encima del canvas */
         }
 
         h1 {
@@ -49,7 +52,7 @@
         button {
             width: 100%;
             padding: 10px;
-            background-color: #001f3f; /* Azul oscuro */
+            background-color: #212222; /* Azul oscuro */
             border: none;
             border-radius: 5px;
             color: #ffffff;
@@ -61,6 +64,16 @@
         button:hover {
             background-color: #000000; /* Negro para el hover */
         }
+
+        /* Estilo para el canvas de fondo */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Asegura que el canvas esté detrás del contenido */
+        }
     </style>
 </head>
 <body>
@@ -70,6 +83,8 @@
         <input type="password" id="password" placeholder="Contraseña" required>
         <button onclick="login()">Iniciar Sesión</button>
     </div>
+
+    <canvas id="matrixCanvas"></canvas>
 
     <script>
         function login() {
@@ -89,6 +104,53 @@
                 alert('Usuario o contraseña incorrectos');
             }
         }
+
+        // Configuración del canvas de animación de Matrix en el fondo
+        const matrixCanvas = document.getElementById('matrixCanvas');
+        const matrixCtx = matrixCanvas.getContext('2d');
+        matrixCanvas.width = window.innerWidth;
+        matrixCanvas.height = window.innerHeight;
+
+        const matrixCharacters = '01';
+        const matrixFontSize = 16;
+        const matrixColumns = matrixCanvas.width / matrixFontSize;
+        const matrixDrops = Array(Math.floor(matrixColumns)).fill(1);
+        let matrixColors = ['#600000', '#000060', '#400040', '#555555']; // Colores más oscuros
+
+        function drawMatrix() {
+            matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Suaviza el efecto de "desvanecimiento"
+            matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+            matrixCtx.fillStyle = '#0F0'; // Color de los números
+            matrixCtx.font = `${matrixFontSize}px monospace`;
+
+            for (let i = 0; i < matrixDrops.length; i++) {
+                const text = matrixCharacters[Math.floor(Math.random() * matrixCharacters.length)];
+                const x = i * matrixFontSize;
+                const y = matrixDrops[i] * matrixFontSize;
+
+                matrixCtx.fillStyle = matrixColors[Math.floor(Math.random() * matrixColors.length)]; // Color aleatorio
+                matrixCtx.fillText(text, x, y);
+
+                if (y > matrixCanvas.height && Math.random() > 0.975) {
+                    matrixDrops[i] = 0;
+                }
+
+                matrixDrops[i]++;
+            }
+        }
+
+        function updateMatrixColors() {
+            matrixColors = ['#600000', '#000060', '#400040', '#555555']; // Colores más oscuros
+        }
+
+        setInterval(updateMatrixColors, 5000); // Cambia los colores cada 5 segundos
+        setInterval(drawMatrix, 50); // Redibuja cada 50ms
+
+        window.addEventListener('resize', () => {
+            matrixCanvas.width = window.innerWidth;
+            matrixCanvas.height = window.innerHeight;
+        });
     </script>
 </body>
 </html>
