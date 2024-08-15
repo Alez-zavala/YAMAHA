@@ -1,0 +1,369 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: black;
+        }
+
+        header {
+            background: linear-gradient(to right, #000000, #212222);
+            color: #ffffff;
+            padding: 20px;
+            text-align: left;
+            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .logo {
+            width: 60px;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover .logo {
+            transform: scale(1.1);
+        }
+
+        .logo-text {
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translateX(10px) translateY(-50%);
+            white-space: nowrap;
+            color: #ffffff;
+            background: #000000;
+            padding: 0;
+            border-radius: 5px;
+            font-size: 0.7em;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            overflow: hidden;
+            z-index: 10;
+            opacity: 1;
+            letter-spacing: -1px;
+        }
+
+        /* Menú de enlaces */
+        .menu {
+            display: inline-block;
+            margin-left: 150px; /* Ajuste del margen para mover el menú */
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .menu a {
+            color: #afaeae;
+            text-decoration: none;
+            margin-left: 10px;
+            font-size: 0.3em; /* Tamaño de fuente más pequeño */
+            text-transform: uppercase; /* Texto en mayúsculas */
+            letter-spacing: 0.3px; /* Espaciado reducido */
+            font-weight: normal; /* Sin negrita */
+            position: relative; /* Posicionamiento relativo para submenú */
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* Menú desplegable "NUESTROS MODELOS" */
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%; /* Alinea el submenú justo debajo del enlace "NUESTROS MODELOS" */
+            left: 0;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            white-space: nowrap;
+        }
+
+        .submenu a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+
+        .submenu a:hover {
+            background-color: #212222;
+        }
+
+        /* Submenú en "MOTOCICLETAS" que se despliega hacia la derecha */
+        .submenu-right {
+            display: none;
+            position: absolute;
+            top: 0; /* Alinea verticalmente con el menú principal */
+            left: 100%;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+            width: 220px; /* Ancho del submenú ajustado */
+            white-space: normal; /* Permite el salto de línea */
+        }
+
+        .submenu-right a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+            word-wrap: break-word; /* Permite el salto de línea en palabras largas */
+        }
+
+        .submenu-right a:hover {
+            background-color: #212222;
+        }
+
+        /* Submenú en "TUS MOTOCICLETAS" que se despliega a la derecha */
+        .submenu-right-right {
+            display: none;
+            position: absolute;
+            top: 0; /* Alinea verticalmente con el submenú de "MOTOCICLETAS" */
+            left: 100%;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 4;
+            width: 220px; /* Ancho del submenú ajustado */
+            white-space: normal; /* Permite el salto de línea */
+        }
+
+        .submenu-right-right a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+            word-wrap: break-word; /* Permite el salto de línea en palabras largas */
+        }
+
+        .submenu-right-right a:hover {
+            background-color: #212222;
+        }
+
+        /* Submenú en "SCOOTERS" que se despliega hacia la derecha */
+        .submenu-scooters {
+            display: none;
+            position: absolute;
+            top: 0; /* Alinea verticalmente con el menú principal */
+            left: 100%;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+            width: 220px; /* Ancho del submenú ajustado */
+            white-space: normal; /* Permite el salto de línea */
+        }
+
+        .submenu-scooters a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+            word-wrap: break-word; /* Permite el salto de línea en palabras largas */
+        }
+
+        .submenu-scooters a:hover {
+            background-color: #212222;
+        }
+
+        /* Submenú en "EBIKES" que se despliega hacia la derecha */
+        .submenu-ebikes {
+            display: none;
+            position: absolute;
+            top: 0; /* Alinea verticalmente con el menú principal */
+            left: 100%;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+            width: 220px; /* Ancho del submenú ajustado */
+            white-space: normal; /* Permite el salto de línea */
+        }
+
+        .submenu-ebikes a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+            word-wrap: break-word; /* Permite el salto de línea en palabras largas */
+        }
+
+        .submenu-ebikes a:hover {
+            background-color: #212222;
+        }
+
+/* Submenú en "TUS EBIKES" que se despliega a la derecha */
+        .submenu-right-right-ebikes {
+            display: none;
+            position: absolute;
+            top: 0; /* Alinea verticalmente con el submenú de "EBIKES" */
+            left: 100%;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 4;
+            width: 220px; /* Ancho del submenú ajustado */
+            white-space: normal; /* Permite el salto de línea */
+        }
+
+        .submenu-right-right-ebikes a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+            word-wrap: break-word; /* Permite el salto de línea en palabras largas */
+        }
+
+        .submenu-right-right-ebikes a:hover {
+            background-color: #212222;
+        }
+
+        /* Mostrar el submenú cuando se hace hover en el enlace "NUESTROS MODELOS" */
+        .menu-item:hover .submenu {
+            display: block;
+        }
+
+        /* Mostrar el submenú cuando se hace hover en el enlace "MOTOCICLETAS" */
+        .menu-item-motocicletas:hover .submenu-right {
+            display: block;
+        }
+
+        /* Mostrar el submenú cuando se hace hover en el enlace "TUS MOTOCICLETAS" */
+        .menu-item-tus-motocicletas:hover .submenu-right-right {
+            display: block;
+        }
+
+        /* Mostrar el submenú cuando se hace hover en el enlace "SCOOTERS" */
+        .menu-item-scooters:hover .submenu-scooters {
+            display: block;
+        }
+
+        /* Mostrar el submenú cuando se hace hover en el enlace "EBIKES" */
+        .menu-item-ebikes:hover .submenu-ebikes {
+            display: block;
+        }
+
+/* Mostrar el submenú cuando se hace hover en el enlace "TUS MOTOCICLETAS" */
+        .menu-item-tus-ebikes:hover .submenu-right-right-ebikes {
+            display: block;
+        }
+
+
+        /* Alineación y estilo de los enlaces del menú */
+        .menu .menu-item {
+            display: inline-block;
+            margin-right: 10px; /* Espacio entre los elementos del menú */
+            position: relative;
+        }
+
+        .menu .menu-item-motocicletas {
+            position: relative;
+        }
+
+        .menu .menu-item-tus-motocicletas {
+            position: relative;
+        }
+
+        .menu .menu-item-scooters {
+            position: relative;
+        }
+
+        .menu .menu-item-ebikes {
+            position: relative;
+        }
+
+        .menu .menu-item-tus-ebikes {
+            position: relative;
+        }
+
+
+
+
+
+
+        /* icono de admin */
+        /* Estilo del enlace del botón */
+.admin-button-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    display: inline-block; /* Permite aplicar padding y otros estilos */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+/* Estilo del botón */
+.admin-button {
+    width: 30px; /* Tamaño del botón */
+    height: 30px; /* Tamaño del botón */
+    background: url('https://i.pinimg.com/564x/4a/df/df/4adfdf7223f476a4a89e318c9158f1c4.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%; /* Hace el botón circular */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    border: none; /* Elimina el borde del botón */
+    outline: none; /* Elimina el borde de enfoque del botón */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease; /* Añade una transición suave para el efecto hover */
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+.admin-button-link:hover .admin-button {
+    transform: scale(1.1); /* Hace que el botón sea un poco más grande al pasar el cursor */
+}
+
+
+
+
+
+/* Efecto de hover opcional para el ícono */
+.admin-icon:hover {
+    background: url('ruta/a/tu/icono-hover.png') no-repeat center center;
+    background-size: cover;
+}
+
+
+        /* Estilo para el canvas de fondo */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+    
