@@ -28,6 +28,97 @@
             z-index: 2; /* Asegura que el encabezado esté encima del efecto de Matrix */
         }
 
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px; /* Espacio entre el logo y el texto */
+        }
+
+        .logo {
+            width: 60px; /* Tamaño del logo */
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease; /* Animación para el crecimiento del logo */
+        }
+
+        .logo-container:hover .logo {
+            transform: scale(1.1); /* Aumento del tamaño del logo */
+        }
+
+        .logo-text {
+            position: absolute;
+            top: 50%;
+            left: 100%; /* Posición inicial fuera de la vista a la derecha del logo */
+            transform: translateX(10px) translateY(-50%); /* Alinea verticalmente al centro del logo */
+            white-space: nowrap;
+            color: #ffffff;
+            background: #000000;
+            padding: 0; /* Elimina el padding para hacer el texto más compacto */
+            border-radius: 5px;
+            font-size: 0.7em; /* Ajusta el tamaño del texto */
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            overflow: hidden;
+            z-index: 10; /* Asegura que el texto esté encima del logo */
+            opacity: 1; /* Asegura que el texto sea visible */
+            letter-spacing: -1px; /* Reducción máxima del espaciado entre letras */
+        }
+
+        .menu {
+            display: inline-block;
+            margin-left: 150px;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .menu a {
+            color: #afaeae;
+            text-decoration: none;
+            margin-left: 10px;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: normal;
+            position: relative;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+    
+       /* icono de admin */
+       .admin-button-link {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000; /* Asegura que esté por encima de otros elementos */
+        display: inline-block; /* Permite aplicar padding y otros estilos */
+        text-decoration: none; /* Elimina el subrayado del enlace */
+    }
+
+    /* Estilo del botón */
+    .admin-button {
+        width: 30px; /* Tamaño del botón */
+        height: 30px; /* Tamaño del botón */
+        background: url('https://i.pinimg.com/564x/4a/df/df/4adfdf7223f476a4a89e318c9158f1c4.jpg') no-repeat center center;
+        background-size: cover;
+        border-radius: 50%; /* Hace el botón circular */
+        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+        border: none; /* Elimina el borde del botón */
+        outline: none; /* Elimina el borde de enfoque del botón */
+        display: flex; /* Usa flexbox para centrar el contenido */
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease; /* Añade una transición suave para el efecto hover */
+    }
+
+    /* Efecto al pasar el cursor sobre el botón */
+    .admin-button-link:hover .admin-button {
+        transform: scale(1.1); /* Hace que el botón sea un poco más grande al pasar el cursor */
+    }
+        
+
         .back-link {
             position: absolute;
             top: 10px;
@@ -161,67 +252,57 @@
         .lightbox img {
             max-width: 100%;
             max-height: 100%;
-            border: 5px solid #001f3f;
+            border: 5px solid #ffffff; /* Borde blanco para la imagen en el lightbox */
         }
 
         .lightbox .close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #001f3f;
-            color: #ffffff;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.5em;
-        }
-
-        .lightbox .controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 10px;
-            z-index: 1001;
-        }
-        
-        .lightbox .controls button {
-            background: #001f3f;
-            color: #ffffff;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
+            top: 10px;
+            right: 10px;
             font-size: 2em;
+            color: #ffffff;
             cursor: pointer;
-        }
-        
-        .lightbox .controls button:hover {
-            background: rgb(0, 0, 0);
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            padding: 5px;
+            transition: background 0.3s;
         }
 
-        /* Estilo para el canvas de fondo */
-        canvas {
-            position: absolute;
+        .lightbox .close:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        #matrixCanvas {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Asegura que el canvas esté detrás del encabezado y el contenido */
+            z-index: 1; /* Asegura que el canvas esté detrás del contenido */
         }
+
     </style>
 </head>
 <body>
     <header>
-        Detalle del Producto
-        <a href="index.html" class="back-link">Inicio</a>
+        <div class="logo-container">
+            <img src="https://i.pinimg.com/564x/4a/df/df/4adfdf7223f476a4a89e318c9158f1c4.jpg" alt="Logo" class="logo">
+            <div class="logo-text">YAMAHA MOTOR COMPANY</div>
+        </div>
+        <nav class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="motosicletas.html">TODOS LOS PRODUCTOS</a>
+            <a href="#">Scooters</a>
+            
+            
+        </nav>
+        <a href="login.html" class="admin-button-link">
+            <div class="admin-button"></div>
+        </a>
     </header>
+
+   
+
 
     <div class="container">
         <div class="carousel" id="carouselContainer">

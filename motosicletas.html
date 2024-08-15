@@ -54,7 +54,7 @@
             background: #000000;
             padding: 0; /* Elimina el padding para hacer el texto más compacto */
             border-radius: 5px;
-            font-size: 0.8em; /* Ajusta el tamaño del texto */
+            font-size: 0.7em; /* Ajusta el tamaño del texto */
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             overflow: hidden;
@@ -63,21 +63,57 @@
             letter-spacing: -1px; /* Reducción máxima del espaciado entre letras */
         }
 
-        .panel-link {
+        .menu {
+            display: inline-block;
+            margin-left: 150px;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .menu a {
+            color: #afaeae;
+            text-decoration: none;
+            margin-left: 10px;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: normal;
+            position: relative;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* icono de admin */
+        .admin-button-link {
             position: absolute;
             top: 20px;
             right: 20px;
-            padding: 5px 10px;
-            background-color: #000000; /* Azul oscuro para los botones */
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.8em; /* Tamaño pequeño */
-            transition: background-color 0.3s;
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            display: inline-block; /* Permite aplicar padding y otros estilos */
+            text-decoration: none; /* Elimina el subrayado del enlace */
         }
 
-        .panel-link:hover {
-            background-color: #000000; /* Negro para el hover */
+        /* Estilo del botón */
+        .admin-button {
+            width: 30px; /* Tamaño del botón */
+            height: 30px; /* Tamaño del botón */
+            background: url('https://i.pinimg.com/564x/4a/df/df/4adfdf7223f476a4a89e318c9158f1c4.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 50%; /* Hace el botón circular */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            border: none; /* Elimina el borde del botón */
+            outline: none; /* Elimina el borde de enfoque del botón */
+            display: flex; /* Usa flexbox para centrar el contenido */
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease; /* Añade una transición suave para el efecto hover */
+        }
+
+        /* Efecto al pasar el cursor sobre el botón */
+        .admin-button-link:hover .admin-button {
+            transform: scale(1.1); /* Hace que el botón sea un poco más grande al pasar el cursor */
         }
 
         .product-grid {
@@ -90,15 +126,23 @@
         }
 
         .product {
-            background-color: #000000; /* Negro para el fondo del producto */
-            border: 2px solid #212222; /* Borde azul oscuro para el producto */
+            background-color: #000000; /* Azul oscuro para el fondo del producto */
+            border: 2px solid #505050; /* Borde azul oscuro para el producto */
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             text-align: center;
             transition: transform 0.3s;
-            padding: 10px; /* Ajusta el padding para hacer el producto más pequeño */
+            padding: 0; /* Elimina el padding para hacer el producto completamente clickeable */
             font-size: 0.8em; /* Tamaño del texto del producto más pequeño */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el producto */
+        }
+
+        .product a {
+            display: block;
+            text-decoration: none; /* Elimina el subrayado del enlace */
+            color: inherit; /* Hereda el color del texto del producto */
+            height: 100%; /* Asegura que el enlace cubra todo el área del producto */
         }
 
         .product:hover {
@@ -111,6 +155,8 @@
             height: 150px; /* Altura fija para todas las imágenes */
             object-fit: cover; /* Mantiene la proporción y recorta si es necesario */
             max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+            display: block; /* Asegura que el contenedor de la imagen sea un bloque */
+            margin: 0 auto; /* Centra la imagen horizontalmente */
         }
 
         .product h2 {
@@ -135,11 +181,19 @@
         <div class="logo-container">
             <img src="https://i.pinimg.com/564x/ea/c0/34/eac03489ac2fba52111cfc24b61693b4.jpg" alt="Logo Yamaha" class="logo">
             <div class="logo-text">
-                <!-- Texto de la marca sin animación -->
                 YAMAHA MOTOR COMPANY
             </div>
         </div>
-        <a href="login.html" class="panel-link">Admin</a>
+        <nav class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="#">Accesorios</a>
+            <a href="#">Ropa y Artículos</a>
+            <a href="#">Experiencias</a>
+            <a href="#">Servicios y Soporte</a>
+        </nav>
+        <a href="login.html" class="admin-button-link">
+            <div class="admin-button"></div>
+        </a>
     </header>
 
     <div class="product-grid" id="productList">

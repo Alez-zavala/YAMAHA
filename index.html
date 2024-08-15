@@ -230,6 +230,35 @@
             background-color: #212222;
         }
 
+/* Submenú en "TUS EBIKES" que se despliega a la derecha */
+        .submenu-right-right-ebikes {
+            display: none;
+            position: absolute;
+            top: 0; /* Alinea verticalmente con el submenú de "EBIKES" */
+            left: 100%;
+            background-color: #000000;
+            padding: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 4;
+            width: 220px; /* Ancho del submenú ajustado */
+            white-space: normal; /* Permite el salto de línea */
+        }
+
+        .submenu-right-right-ebikes a {
+            display: block;
+            padding: 8px 12px;
+            color: #afaeae;
+            text-decoration: none;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            font-weight: normal;
+            word-wrap: break-word; /* Permite el salto de línea en palabras largas */
+        }
+
+        .submenu-right-right-ebikes a:hover {
+            background-color: #212222;
+        }
+
         /* Mostrar el submenú cuando se hace hover en el enlace "NUESTROS MODELOS" */
         .menu-item:hover .submenu {
             display: block;
@@ -255,6 +284,12 @@
             display: block;
         }
 
+/* Mostrar el submenú cuando se hace hover en el enlace "TUS MOTOCICLETAS" */
+        .menu-item-tus-ebikes:hover .submenu-right-right-ebikes {
+            display: block;
+        }
+
+
         /* Alineación y estilo de los enlaces del menú */
         .menu .menu-item {
             display: inline-block;
@@ -278,23 +313,57 @@
             position: relative;
         }
 
-        /* Botón de Admin */
-        .panel-link {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 5px 10px;
-            background-color: #000000;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.8em;
-            transition: background-color 0.3s;
+        .menu .menu-item-tus-ebikes {
+            position: relative;
         }
 
-        .panel-link:hover {
-            background-color: #333333;
-        }
+
+
+
+
+
+        /* icono de admin */
+        /* Estilo del enlace del botón */
+.admin-button-link {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    display: inline-block; /* Permite aplicar padding y otros estilos */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+/* Estilo del botón */
+.admin-button {
+    width: 30px; /* Tamaño del botón */
+    height: 30px; /* Tamaño del botón */
+    background: url('https://i.pinimg.com/564x/4a/df/df/4adfdf7223f476a4a89e318c9158f1c4.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%; /* Hace el botón circular */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    border: none; /* Elimina el borde del botón */
+    outline: none; /* Elimina el borde de enfoque del botón */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease; /* Añade una transición suave para el efecto hover */
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+.admin-button-link:hover .admin-button {
+    transform: scale(1.1); /* Hace que el botón sea un poco más grande al pasar el cursor */
+}
+
+
+
+
+
+/* Efecto de hover opcional para el ícono */
+.admin-icon:hover {
+    background: url('ruta/a/tu/icono-hover.png') no-repeat center center;
+    background-size: cover;
+}
+
 
         /* Estilo para el canvas de fondo */
         canvas {
@@ -321,10 +390,10 @@
                 <a href="#">NUESTROS MODELOS</a>
                 <div class="submenu">
                     <div class="menu-item-motocicletas">
-                        <a href="#">MOTOCICLETAS</a>
+                        <a href="#">MOTOCICLETAS ➤</a>
                         <div class="submenu-right">
                             <div class="menu-item-tus-motocicletas">
-                                <a href="#">TUS MOTOCICLETAS</a>
+                                <a href="#">TUS MOTOCICLETAS ➤</a>
                                 <div class="submenu-right-right">
                                     <a href="#">SUPER SPORT</a>
                                     <a href="#">HYPER NAKED</a>
@@ -346,7 +415,7 @@
                         </div>
                     </div>
                     <div class="menu-item-scooters">
-                        <a href="#">SCOOTERS</a>
+                        <a href="#">SCOOTERS ➤</a>
                         <div class="submenu-scooters">
                             <a href="#">TUS SCOOTERS</a>
                             <a href="#">SOLICITA UNA PRUEBA DE PRODUCTO</a>
@@ -355,9 +424,16 @@
                         </div>
                     </div>
                     <div class="menu-item-ebikes">
-                        <a href="#">EBIKES</a>
+                        <a href="#">EBIKES ➤</a>
                         <div class="submenu-ebikes">
-                            <a href="#">TUS EBIKES</a>
+                            <div class="menu-item-tus-ebikes">
+                                <a href="#">TUS EBIKES ➤</a>
+                                <div class="submenu-right-right-ebikes">
+                                    <a href="#">MOUNTAIN</a>
+                                    <a href="#">URBAN</a>
+                                    <a href="#">GRAVEL EBIKES</a>
+                                </div>
+                            </div>
                             <a href="#">COMPARAR EBIKES</a>
                             <a href="#">CÓMO COMPRAR</a>
                             <a href="#">SOLICITA UNA PRUEBA DE PRODUCTO</a>
@@ -370,6 +446,7 @@
                     <a href="#">ATV & SIDE BY SIDE</a>
                     <a href="#">VEHÍCULOS LIGEROS</a>
                     <a href="#">GENERADORES</a>
+                    <a href="motosicletas.html">TODOS</a> 
                 </div>
             </div>
             <a href="#">ACCESORIOS</a>
@@ -377,8 +454,11 @@
             <a href="#">EXPERIENCIAS</a>
             <a href="#">SERVICIOS Y SOPORTE</a>
         </nav>
-        <a href="login.html" class="panel-link">Admin</a>
+        <a href="login.html" class="admin-button-link">
+            <div class="admin-button"></div>
+        </a>
     </header>
+</body>
 
     <canvas id="matrixCanvas"></canvas>
 
