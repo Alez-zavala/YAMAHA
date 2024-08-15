@@ -1,0 +1,168 @@
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Evita el scroll debido a la animación */
+            background: black; /* Fondo negro */
+        }
+        
+        header {
+            background: linear-gradient(to right, #000000, #212222); /* Negro mezclado con azul oscuro */
+            color: #ffffff;
+            padding: 20px;
+            text-align: left;
+            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2; /* Asegura que el encabezado esté encima del efecto de Matrix */
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px; /* Espacio entre el logo y el texto */
+        }
+
+        .logo {
+            width: 60px; /* Tamaño del logo */
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease; /* Animación para el crecimiento del logo */
+        }
+
+        .logo-container:hover .logo {
+            transform: scale(1.1); /* Aumento del tamaño del logo */
+        }
+
+        .logo-text {
+            position: absolute;
+            top: 50%;
+            left: 100%; /* Posición inicial fuera de la vista a la derecha del logo */
+            transform: translateX(10px) translateY(-50%); /* Alinea verticalmente al centro del logo */
+            white-space: nowrap;
+            color: #ffffff;
+            background: #000000;
+            padding: 0; /* Elimina el padding para hacer el texto más compacto */
+            border-radius: 5px;
+            font-size: 0.7em; /* Ajusta el tamaño del texto */
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            overflow: hidden;
+            z-index: 10; /* Asegura que el texto esté encima del logo */
+            opacity: 1; /* Asegura que el texto sea visible */
+            letter-spacing: -1px; /* Reducción máxima del espaciado entre letras */
+        }
+
+        .menu {
+            display: inline-block;
+            margin-left: 150px;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .menu a {
+            color: #afaeae;
+            text-decoration: none;
+            margin-left: 10px;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: normal;
+            position: relative;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* icono de admin */
+        .admin-button-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+            display: inline-block; /* Permite aplicar padding y otros estilos */
+            text-decoration: none; /* Elimina el subrayado del enlace */
+        }
+
+        /* Estilo del botón */
+        .admin-button {
+            width: 30px; /* Tamaño del botón */
+            height: 30px; /* Tamaño del botón */
+            background: url('https://i.pinimg.com/564x/4a/df/df/4adfdf7223f476a4a89e318c9158f1c4.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 50%; /* Hace el botón circular */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            border: none; /* Elimina el borde del botón */
+            outline: none; /* Elimina el borde de enfoque del botón */
+            display: flex; /* Usa flexbox para centrar el contenido */
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease; /* Añade una transición suave para el efecto hover */
+        }
+
+        /* Efecto al pasar el cursor sobre el botón */
+        .admin-button-link:hover .admin-button {
+            transform: scale(1.1); /* Hace que el botón sea un poco más grande al pasar el cursor */
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 5 productos por fila */
+            gap: 10px; /* Reduce el espacio entre productos */
+            padding: 20px;
+            position: relative; /* Asegura que la cuadrícula de productos esté encima del canvas */
+            z-index: 2;
+        }
+
+        .product {
+            background-color: #000000; /* Azul oscuro para el fondo del producto */
+            border: 2px solid #505050; /* Borde azul oscuro para el producto */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+            padding: 0; /* Elimina el padding para hacer el producto completamente clickeable */
+            font-size: 0.8em; /* Tamaño del texto del producto más pequeño */
+            cursor: pointer; /* Cambia el cursor al pasar sobre el producto */
+        }
+
+        .product a {
+            display: block;
+            text-decoration: none; /* Elimina el subrayado del enlace */
+            color: inherit; /* Hereda el color del texto del producto */
+            height: 100%; /* Asegura que el enlace cubra todo el área del producto */
+        }
+
+        .product:hover {
+            transform: scale(1.05);
+            border-color: #ffffff; /* Cambia el borde a blanco al pasar el mouse */
+        }
+
+        .product img {
+            width: auto; /* Ajusta el ancho automáticamente */
+            height: 150px; /* Altura fija para todas las imágenes */
+            object-fit: cover; /* Mantiene la proporción y recorta si es necesario */
+            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+            display: block; /* Asegura que el contenedor de la imagen sea un bloque */
+            margin: 0 auto; /* Centra la imagen horizontalmente */
+        }
+
+        .product h2 {
+            font-size: 1.2em; /* Aumenta el tamaño del texto del nombre del producto */
+            color: #ffffff;
+            margin: 10px 0; /* Ajusta el margen */
+        }
+
+        /* Estilo para el canvas de fondo */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Asegura que el canvas esté detrás del encabezado y el contenido */
+        }

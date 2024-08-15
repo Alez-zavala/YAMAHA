@@ -1,0 +1,277 @@
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000; /* Fondo negro */
+            color: #ffffff; /* Color de texto blanco */
+            overflow: hidden; /* Evita el scroll debido a la animación */
+        }
+
+        header {
+            background: linear-gradient(to right, #000000, #212222); /* Negro mezclado con azul oscuro */
+            color: #ffffff;
+            padding: 20px;
+            text-align: left;
+            font-size: 2.5em;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2; /* Asegura que el encabezado esté encima del efecto de Matrix */
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px; /* Espacio entre el logo y el texto */
+        }
+
+        .logo {
+            width: 60px; /* Tamaño del logo */
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease; /* Animación para el crecimiento del logo */
+        }
+
+        .logo-container:hover .logo {
+            transform: scale(1.1); /* Aumento del tamaño del logo */
+        }
+
+        .logo-text {
+            position: absolute;
+            top: 50%;
+            left: 100%; /* Posición inicial fuera de la vista a la derecha del logo */
+            transform: translateX(10px) translateY(-50%); /* Alinea verticalmente al centro del logo */
+            white-space: nowrap;
+            color: #ffffff;
+            background: #000000;
+            padding: 0; /* Elimina el padding para hacer el texto más compacto */
+            border-radius: 5px;
+            font-size: 0.7em; /* Ajusta el tamaño del texto */
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            overflow: hidden;
+            z-index: 10; /* Asegura que el texto esté encima del logo */
+            opacity: 1; /* Asegura que el texto sea visible */
+            letter-spacing: -1px; /* Reducción máxima del espaciado entre letras */
+        }
+
+        .menu {
+            display: inline-block;
+            margin-left: 150px;
+            vertical-align: middle;
+            position: relative;
+        }
+
+        .menu a {
+            color: #afaeae;
+            text-decoration: none;
+            margin-left: 10px;
+            font-size: 0.3em;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: normal;
+            position: relative;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+    
+       /* icono de admin */
+       .admin-button-link {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000; /* Asegura que esté por encima de otros elementos */
+        display: inline-block; /* Permite aplicar padding y otros estilos */
+        text-decoration: none; /* Elimina el subrayado del enlace */
+    }
+
+    /* Estilo del botón */
+    .admin-button {
+        width: 30px; /* Tamaño del botón */
+        height: 30px; /* Tamaño del botón */
+        background: url('https://i.pinimg.com/564x/4a/df/df/4adfdf7223f476a4a89e318c9158f1c4.jpg') no-repeat center center;
+        background-size: cover;
+        border-radius: 50%; /* Hace el botón circular */
+        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+        border: none; /* Elimina el borde del botón */
+        outline: none; /* Elimina el borde de enfoque del botón */
+        display: flex; /* Usa flexbox para centrar el contenido */
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s ease; /* Añade una transición suave para el efecto hover */
+    }
+
+    /* Efecto al pasar el cursor sobre el botón */
+    .admin-button-link:hover .admin-button {
+        transform: scale(1.1); /* Hace que el botón sea un poco más grande al pasar el cursor */
+    }
+        
+
+        .back-link {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.6em; /* Tamaño más pequeño */
+            padding: 2px 5px;
+            background-color: #212222; /* Azul oscuro para el botón de regreso */
+            color: #ffffff; /* Color del texto del botón de regreso */
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-link:hover {
+            background-color: #000000; /* Negro para el hover */
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #000000; /* Fondo negro para el contenedor */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2; /* Asegura que el contenido esté encima del efecto de Matrix */
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid #212222; /* Borde azul oscuro para el carrusel */
+            border-radius: 10px;
+            padding: 5px;
+            width: 100%;
+            max-width: 300px;
+            height: 300px; /* Ajusta la altura del carrusel */
+            box-shadow: 0 0 15px rgba(0, 31, 63, 0.8);
+            animation: neon 6s ease-in-out infinite;
+        }
+
+        @keyframes neon {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(0, 31, 63, 0.8), 
+                            0 0 20px rgba(0, 31, 63, 0.6), 
+                            0 0 30px rgba(0, 31, 63, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0, 31, 63, 1), 
+                            0 0 30px rgba(0, 31, 63, 0.9), 
+                            0 0 40px rgba(0, 31, 63, 0.7);
+            }
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex: 0 0 auto;
+            cursor: pointer;
+            border: 5px solid #000000; /* Borde blanco para las imágenes */
+            box-sizing: border-box; /* Asegura que el borde no afecte el tamaño del contenedor */
+        }
+
+        .product-details {
+            margin-top: 20px;
+        }
+
+        .product-details h1 {
+            font-size: 2em;
+            color: #ffffff; /* Color del nombre del producto */
+        }
+
+        .product-details p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .product-details .btn {
+            background-color: #212222; /* Azul oscuro para el botón de ficha técnica */
+            color: #ffffff; /* Color del texto del botón de ficha técnica */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .product-details .btn:hover {
+            background-color: #000000; /* Negro para el hover */
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 100%;
+            max-height: 100%;
+            border: 5px solid #ffffff; /* Borde blanco para la imagen en el lightbox */
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2em;
+            color: #ffffff;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            padding: 5px;
+            transition: background 0.3s;
+        }
+
+        .lightbox .close:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        #matrixCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Asegura que el canvas esté detrás del contenido */
+        }
+
+    

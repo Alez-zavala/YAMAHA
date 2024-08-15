@@ -364,6 +364,89 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: 0;
         }
     
+       
+
+/* Imagenes portada */
+
+/* Contenedor de la cuadrícula que organiza las cajas de productos */
+.container {
+    display: grid; /* Usa el modelo de cuadrícula CSS para organizar elementos en filas y columnas */
+    grid-template-columns: repeat(5, 1fr); /* Crea 5 columnas de igual tamaño en la cuadrícula */
+    gap: 1em; /* Espacio entre las columnas */
+    position: relative; /* Necesario para posicionar elementos hijos absolutamente */
+}
+
+/* Estilo de cada caja dentro del contenedor */
+.box {
+    position: relative; /* Permite posicionar elementos hijos de forma absoluta dentro de la caja */
+    background-image: var(--img); /* Usa una imagen de fondo que se define en la variable CSS --img */
+    background-size: cover; /* Asegura que la imagen de fondo cubra todo el área de la caja */
+    background-position: center; /* Centra la imagen de fondo dentro de la caja */
+    height: 500px; /* Establece una altura fija para cada caja */
+    border-radius: 10px; /* Redondea las esquinas de la caja */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde de la caja */
+    transition: transform 0.3s ease-in-out; /* Añade una transición suave para el efecto de transformación */
+}
+
+/* Efecto de crecimiento suave al pasar el cursor sobre la caja */
+.box:hover {
+    transform: scale(1.05); /* Aumenta el tamaño de la caja al 105% de su tamaño original */
+}
+
+/* Estilo para el texto que aparece sobre cada caja de imagen */
+.box::before {
+    content: attr(data-text); /* Usa el valor del atributo data-text como contenido del pseudo-elemento */
+    position: absolute; /* Posiciona el pseudo-elemento absolutamente dentro de la caja */
+    bottom: 0; /* Coloca el texto en la parte inferior de la caja */
+    left: 0; /* Alinea el texto al borde izquierdo de la caja */
+    width: 100%; /* Hace que el pseudo-elemento ocupe todo el ancho de la caja */
+    padding: 10px; /* Añade un espacio interior alrededor del texto */
+    background: rgba(0, 0, 0, 0.5); /* Fondea el texto con un fondo negro semitransparente */
+    color: white; /* Establece el color del texto en blanco */
+    text-align: center; /* Centra el texto horizontalmente */
+    font-size: 1.2em; /* Establece el tamaño de fuente del texto */
+    font-weight: bold; /* Hace el texto en negrita */
+}
+
+/* Posicionamiento específico de cada caja en la fila */
+.box:nth-child(1) {
+    grid-column: 1; /* Coloca la primera caja en la primera columna */
+    top: 0; /* Sin desplazamiento vertical */
+}
+
+.box:nth-child(2) {
+    grid-column: 2; /* Coloca la segunda caja en la segunda columna */
+    top: 50px; /* Desplaza la caja hacia abajo */
+}
+
+.box:nth-child(3) {
+    grid-column: 3; /* Coloca la tercera caja en la tercera columna */
+    top: 0; /* Sin desplazamiento vertical */
+}
+
+.box:nth-child(4) {
+    grid-column: 4; /* Coloca la cuarta caja en la cuarta columna */
+    top: 50px; /* Desplaza la caja hacia abajo */
+}
+
+.box:nth-child(5) {
+    grid-column: 5; /* Coloca la quinta caja en la quinta columna */
+    top: 0; /* Sin desplazamiento vertical */
+}
+
+/* Contenedor de la capa superior que está encima de otros elementos */
+.container.top-layer {
+    position: relative; /* Posiciona el contenedor en relación con su posición original */
+    top: 0; /* Ajusta la posición vertical del contenedor (sin cambio en este caso) */
+    left: 0; /* Ajusta la posición horizontal del contenedor (sin cambio en este caso) */
+    width: 70%; /* Hace que el contenedor ocupe el 70% del ancho disponible */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    z-index: 1; /* Establece el nivel de apilamiento para asegurarse de que esté por encima de otros elementos */
+    display: grid; /* Usa el modelo de cuadrícula CSS para organizar elementos en filas y columnas */
+    grid-template-columns: repeat(5, 1fr); /* Crea 5 columnas de igual tamaño en la cuadrícula */
+    gap: 1em; /* Espacio entre las columnas */
+    padding: 1em; /* Añade espacio interior alrededor del contenido del contenedor */
+}
