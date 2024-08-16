@@ -2,7 +2,7 @@ body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Evita el scroll debido a la animación */
+            /*overflow: hidden;  Evita el scroll debido a la animación */
             background: black; /* Fondo negro */
         }
         

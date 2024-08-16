@@ -1,277 +1,272 @@
+body {
+    font-family: Arial, sans-serif; /* Establece la fuente del texto a Arial con una fuente alternativa sans-serif */
+    margin: 0; /* Elimina el margen predeterminado del navegador */
+    padding: 0; /* Elimina el padding predeterminado del navegador */
+    background-color: #000000; /* Establece el color de fondo a negro */
+    color: #ffffff; /* Establece el color del texto a blanco */
+    /*overflow: hidden;  Evita el scroll debido a la animación */
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000000; /* Fondo negro */
-            color: #ffffff; /* Color de texto blanco */
-            overflow: hidden; /* Evita el scroll debido a la animación */
-        }
+header {
+    background: linear-gradient(to right, #000000, #212222); /* Crea un degradado de negro a azul oscuro como fondo del encabezado */
+    color: #ffffff; /* Establece el color del texto en el encabezado a blanco */
+    padding: 20px; /* Agrega un padding de 20px alrededor del contenido del encabezado */
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-size: 2.5em; /* Establece el tamaño de la fuente del encabezado */
+    font-family: 'Playfair Display', serif; /* Establece la fuente del texto a Playfair Display, con una fuente serif como alternativa */
+    font-weight: 700; /* Establece el peso de la fuente a negrita */
+    letter-spacing: 1px; /* Agrega un espaciado de 1px entre las letras */
+    position: relative; /* Posiciona el encabezado de forma relativa para el posicionamiento de elementos internos */
+    z-index: 2; /* Asegura que el encabezado esté encima del efecto de Matrix */
+}
 
-        header {
-            background: linear-gradient(to right, #000000, #212222); /* Negro mezclado con azul oscuro */
-            color: #ffffff;
-            padding: 20px;
-            text-align: left;
-            font-size: 2.5em;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            letter-spacing: 1px;
-            position: relative;
-            z-index: 2; /* Asegura que el encabezado esté encima del efecto de Matrix */
-        }
+.logo-container {
+    position: relative; /* Posiciona el contenedor del logo de forma relativa */
+    display: inline-block; /* Muestra el contenedor del logo en línea y permite establecer dimensiones */
+    margin-right: 10px; /* Agrega un margen a la derecha del contenedor del logo */
+}
 
-        .logo-container {
-            position: relative;
-            display: inline-block;
-            margin-right: 10px; /* Espacio entre el logo y el texto */
-        }
+.logo {
+    width: 60px; /* Establece el ancho del logo */
+    height: auto; /* Mantiene la proporción del logo */
+    display: block; /* Muestra el logo como un bloque */
+    transition: transform 0.3s ease; /* Agrega una transición suave para el efecto de escala */
+}
 
-        .logo {
-            width: 60px; /* Tamaño del logo */
-            height: auto;
-            display: block;
-            transition: transform 0.3s ease; /* Animación para el crecimiento del logo */
-        }
+.logo-container:hover .logo {
+    transform: scale(1.1); /* Aumenta el tamaño del logo al 110% cuando se pasa el cursor sobre el contenedor */
+}
 
-        .logo-container:hover .logo {
-            transform: scale(1.1); /* Aumento del tamaño del logo */
-        }
+.logo-text {
+    position: absolute; /* Posiciona el texto del logo de forma absoluta dentro del contenedor del logo */
+    top: 50%; /* Posiciona el texto verticalmente en el centro del contenedor */
+    left: 100%; /* Coloca el texto justo a la derecha del contenedor del logo */
+    transform: translateX(10px) translateY(-50%); /* Ajusta la posición del texto para centrarlo verticalmente y separarlo horizontalmente */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    color: #ffffff; /* Establece el color del texto a blanco */
+    background: #000000; /* Establece el fondo del texto a negro */
+    padding: 0; /* Elimina el padding alrededor del texto */
+    border-radius: 5px; /* Agrega esquinas redondeadas al fondo del texto */
+    font-size: 0.7em; /* Ajusta el tamaño de la fuente del texto */
+    font-family: 'Playfair Display', serif; /* Establece la fuente del texto a Playfair Display, con una fuente serif como alternativa */
+    font-weight: 700; /* Establece el peso de la fuente a negrita */
+    overflow: hidden; /* Evita que el texto se desborde del contenedor */
+    z-index: 10; /* Asegura que el texto del logo esté por encima del logo */
+    opacity: 1; /* Asegura que el texto sea completamente visible */
+    letter-spacing: -1px; /* Reduce el espaciado entre letras */
+}
 
-        .logo-text {
-            position: absolute;
-            top: 50%;
-            left: 100%; /* Posición inicial fuera de la vista a la derecha del logo */
-            transform: translateX(10px) translateY(-50%); /* Alinea verticalmente al centro del logo */
-            white-space: nowrap;
-            color: #ffffff;
-            background: #000000;
-            padding: 0; /* Elimina el padding para hacer el texto más compacto */
-            border-radius: 5px;
-            font-size: 0.7em; /* Ajusta el tamaño del texto */
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            overflow: hidden;
-            z-index: 10; /* Asegura que el texto esté encima del logo */
-            opacity: 1; /* Asegura que el texto sea visible */
-            letter-spacing: -1px; /* Reducción máxima del espaciado entre letras */
-        }
+.menu {
+    display: inline-block; /* Muestra el menú en línea y permite establecer dimensiones */
+    margin-left: 150px; /* Agrega un margen a la izquierda del menú */
+    vertical-align: middle; /* Alinea el menú verticalmente al centro del contenedor */
+    position: relative; /* Posiciona el menú de forma relativa para el posicionamiento de elementos internos */
+}
 
-        .menu {
-            display: inline-block;
-            margin-left: 150px;
-            vertical-align: middle;
-            position: relative;
-        }
+.menu a {
+    color: #afaeae; /* Establece el color del texto de los enlaces a un gris claro */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    margin-left: 10px; /* Agrega un margen a la izquierda de los enlaces */
+    font-size: 0.3em; /* Establece el tamaño de la fuente de los enlaces */
+    text-transform: uppercase; /* Convierte el texto de los enlaces a mayúsculas */
+    letter-spacing: 0.3px; /* Agrega un espaciado de 0.3px entre las letras */
+    font-weight: normal; /* Establece el peso de la fuente a normal */
+    position: relative; /* Posiciona los enlaces de forma relativa */
+}
 
-        .menu a {
-            color: #afaeae;
-            text-decoration: none;
-            margin-left: 10px;
-            font-size: 0.3em;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            font-weight: normal;
-            position: relative;
-        }
+.menu a:hover {
+    text-decoration: underline; /* Agrega un subrayado a los enlaces cuando se pasa el cursor sobre ellos */
+}
 
-        .menu a:hover {
-            text-decoration: underline;
-        }
+/* icono de admin */
+.admin-button-link {
+    position: absolute; /* Posiciona el enlace del botón de administración de forma absoluta */
+    top: 20px; /* Coloca el enlace 20px desde la parte superior del contenedor */
+    right: 20px; /* Coloca el enlace 20px desde el borde derecho del contenedor */
+    z-index: 1000; /* Asegura que el enlace esté por encima de otros elementos */
+    display: inline-block; /* Muestra el enlace en línea y permite aplicar padding y otros estilos */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+}
 
-    
-       /* icono de admin */
-       .admin-button-link {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        z-index: 1000; /* Asegura que esté por encima de otros elementos */
-        display: inline-block; /* Permite aplicar padding y otros estilos */
-        text-decoration: none; /* Elimina el subrayado del enlace */
+/* Estilo del botón */
+.admin-button {
+    width: 30px; /* Establece el ancho del botón */
+    height: 30px; /* Establece la altura del botón */
+    background: url('https://i.pinimg.com/564x/4a/df/df/4adfdf7223f476a4a89e318c9158f1c4.jpg') no-repeat center center; /* Establece la imagen de fondo del botón */
+    background-size: cover; /* Asegura que la imagen cubra completamente el botón */
+    border-radius: 50%; /* Hace el botón circular */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    border: none; /* Elimina el borde del botón */
+    outline: none; /* Elimina el borde de enfoque del botón */
+    display: flex; /* Usa flexbox para centrar el contenido dentro del botón */
+    align-items: center; /* Alinea el contenido del botón verticalmente en el centro */
+    justify-content: center; /* Alinea el contenido del botón horizontalmente en el centro */
+    transition: transform 0.2s ease; /* Añade una transición suave para el efecto hover */
+}
+
+/* Efecto al pasar el cursor sobre el botón */
+.admin-button-link:hover .admin-button {
+    transform: scale(1.1); /* Aumenta el tamaño del botón al 110% cuando se pasa el cursor sobre él */
+}
+
+.back-link {
+    position: absolute; /* Posiciona el enlace de regreso de forma absoluta */
+    top: 10px; /* Coloca el enlace 10px desde la parte superior del contenedor */
+    right: 10px; /* Coloca el enlace 10px desde el borde derecho del contenedor */
+    font-size: 0.6em; /* Establece un tamaño de fuente más pequeño para el enlace de regreso */
+    padding: 2px 5px; /* Agrega un padding alrededor del texto del enlace */
+    background-color: #212222; /* Establece el color de fondo del enlace a azul oscuro */
+    color: #ffffff; /* Establece el color del texto del enlace a blanco */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    border-radius: 5px; /* Agrega esquinas redondeadas al fondo del enlace */
+    transition: background-color 0.3s; /* Añade una transición suave para el cambio de color de fondo */
+}
+
+.back-link:hover {
+    background-color: #000000; /* Cambia el color de fondo a negro cuando se pasa el cursor sobre el enlace */
+}
+
+.container {
+    width: 80%; /* Establece el ancho del contenedor al 80% del ancho del elemento padre */
+    max-width: 800px; /* Establece un ancho máximo de 800px para el contenedor */
+    margin: auto; /* Centra el contenedor horizontalmente */
+    padding: 20px; /* Agrega un padding de 20px alrededor del contenido del contenedor */
+    background-color: #000000; /* Establece el color de fondo del contenedor a negro */
+    border-radius: 8px; /* Agrega esquinas redondeadas al contenedor */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Agrega una sombra sutil alrededor del contenedor */
+    position: relative; /* Posiciona el contenedor de forma relativa para el posicionamiento de elementos internos */
+    z-index: 2; /* Asegura que el contenedor esté por encima del efecto de Matrix */
+}
+
+.carousel {
+    position: relative; /* Posiciona el carrusel de forma relativa */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde del carrusel */
+    margin: auto; /* Centra el carrusel horizontalmente */
+    display: flex; /* Usa flexbox para alinear el contenido del carrusel */
+    justify-content: center; /* Alinea el contenido del carrusel horizontalmente en el centro */
+    align-items: center; /* Alinea el contenido del carrusel verticalmente en el centro */
+    border: 5px solid #212222; /* Agrega un borde azul oscuro alrededor del carrusel */
+    border-radius: 10px; /* Agrega esquinas redondeadas al carrusel */
+    padding: 5px; /* Agrega un padding alrededor del contenido del carrusel */
+    width: 100%; /* Establece el ancho del carrusel al 100% del elemento padre */
+    max-width: 300px; /* Establece un ancho máximo de 300px para el carrusel */
+    height: 300px; /* Establece la altura del carrusel */
+    box-shadow: 0 0 15px rgba(0, 31, 63, 0.8); /* Agrega una sombra alrededor del carrusel */
+    animation: neon 6s ease-in-out infinite; /* Aplica una animación de neón al carrusel */
+}
+
+@keyframes neon {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(0, 31, 63, 0.8), 
+                    0 0 20px rgba(0, 31, 63, 0.6), 
+                    0 0 30px rgba(0, 31, 63, 0.4); /* Define el brillo inicial y final del efecto de neón */
     }
-
-    /* Estilo del botón */
-    .admin-button {
-        width: 30px; /* Tamaño del botón */
-        height: 30px; /* Tamaño del botón */
-        background: url('https://i.pinimg.com/564x/4a/df/df/4adfdf7223f476a4a89e318c9158f1c4.jpg') no-repeat center center;
-        background-size: cover;
-        border-radius: 50%; /* Hace el botón circular */
-        cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-        border: none; /* Elimina el borde del botón */
-        outline: none; /* Elimina el borde de enfoque del botón */
-        display: flex; /* Usa flexbox para centrar el contenido */
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.2s ease; /* Añade una transición suave para el efecto hover */
+    50% {
+        box-shadow: 0 0 20px rgba(0, 31, 63, 1), 
+                    0 0 30px rgba(0, 31, 63, 0.9), 
+                    0 0 40px rgba(0, 31, 63, 0.7); /* Define el brillo máximo del efecto de neón */
     }
+}
 
-    /* Efecto al pasar el cursor sobre el botón */
-    .admin-button-link:hover .admin-button {
-        transform: scale(1.1); /* Hace que el botón sea un poco más grande al pasar el cursor */
-    }
-        
+.carousel-inner {
+    display: flex; /* Usa flexbox para alinear las imágenes dentro del carrusel */
+    transition: transform 0.5s ease-in-out; /* Añade una transición suave para el desplazamiento de las imágenes */
+    width: 100%; /* Establece el ancho del contenedor interno al 100% del carrusel */
+    height: 100%; /* Establece la altura del contenedor interno al 100% del carrusel */
+}
 
-        .back-link {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 0.6em; /* Tamaño más pequeño */
-            padding: 2px 5px;
-            background-color: #212222; /* Azul oscuro para el botón de regreso */
-            color: #ffffff; /* Color del texto del botón de regreso */
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
+.carousel-inner img {
+    width: 100%; /* Establece el ancho de las imágenes al 100% del contenedor */
+    height: 100%; /* Establece la altura de las imágenes al 100% del contenedor */
+    object-fit: cover; /* Asegura que las imágenes cubran el contenedor sin distorsionarse */
+    flex: 0 0 auto; /* Establece que las imágenes no se estiren ni se contraigan */
+    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+    border: 5px solid #000000; /* Agrega un borde negro alrededor de las imágenes */
+    box-sizing: border-box; /* Asegura que el borde no afecte el tamaño del contenedor */
+}
 
-        .back-link:hover {
-            background-color: #000000; /* Negro para el hover */
-        }
+.product-details {
+    margin-top: 20px; /* Agrega un margen superior para separar los detalles del producto del contenido anterior */
+}
 
-        .container {
-            width: 80%;
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #000000; /* Fondo negro para el contenedor */
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            position: relative;
-            z-index: 2; /* Asegura que el contenido esté encima del efecto de Matrix */
-        }
+.product-details h1 {
+    font-size: 2em; /* Establece el tamaño de la fuente del nombre del producto */
+    color: #ffffff; /* Establece el color del texto del nombre del producto a blanco */
+}
 
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            margin: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 5px solid #212222; /* Borde azul oscuro para el carrusel */
-            border-radius: 10px;
-            padding: 5px;
-            width: 100%;
-            max-width: 300px;
-            height: 300px; /* Ajusta la altura del carrusel */
-            box-shadow: 0 0 15px rgba(0, 31, 63, 0.8);
-            animation: neon 6s ease-in-out infinite;
-        }
+.product-details p {
+    line-height: 1.6; /* Establece la altura de línea para el texto del producto */
+    margin-bottom: 20px; /* Agrega un margen inferior para separar el párrafo de otros elementos */
+}
 
-        @keyframes neon {
-            0%, 100% {
-                box-shadow: 0 0 10px rgba(0, 31, 63, 0.8), 
-                            0 0 20px rgba(0, 31, 63, 0.6), 
-                            0 0 30px rgba(0, 31, 63, 0.4);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(0, 31, 63, 1), 
-                            0 0 30px rgba(0, 31, 63, 0.9), 
-                            0 0 40px rgba(0, 31, 63, 0.7);
-            }
-        }
+.product-details .btn {
+    background-color: #212222; /* Establece el color de fondo del botón de ficha técnica a azul oscuro */
+    color: #ffffff; /* Establece el color del texto del botón a blanco */
+    border: none; /* Elimina el borde del botón */
+    padding: 10px 20px; /* Agrega padding alrededor del texto del botón */
+    border-radius: 5px; /* Agrega esquinas redondeadas al botón */
+    font-size: 1em; /* Establece el tamaño de la fuente del botón */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    text-decoration: none; /* Elimina el subrayado del texto del botón */
+    display: inline-block; /* Muestra el botón en línea y permite aplicar padding */
+    transition: background-color 0.3s; /* Añade una transición suave para el cambio de color de fondo */
+}
 
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            width: 100%;
-            height: 100%;
-        }
+.product-details .btn:hover {
+    background-color: #000000; /* Cambia el color de fondo a negro cuando se pasa el cursor sobre el botón */
+}
 
-        .carousel-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            flex: 0 0 auto;
-            cursor: pointer;
-            border: 5px solid #000000; /* Borde blanco para las imágenes */
-            box-sizing: border-box; /* Asegura que el borde no afecte el tamaño del contenedor */
-        }
+/* Lightbox styles */
+.lightbox {
+    position: fixed; /* Posiciona el lightbox de forma fija para que se mantenga en su lugar durante el scroll */
+    top: 0; /* Coloca el lightbox en la parte superior del contenedor */
+    left: 0; /* Coloca el lightbox en el borde izquierdo del contenedor */
+    width: 100%; /* Establece el ancho del lightbox al 100% del viewport */
+    height: 100%; /* Establece la altura del lightbox al 100% del viewport */
+    background: rgba(0, 0, 0, 0.8); /* Establece el fondo del lightbox a negro con opacidad */
+    display: none; /* Oculta el lightbox por defecto */
+    justify-content: center; /* Alinea el contenido del lightbox horizontalmente en el centro */
+    align-items: center; /* Alinea el contenido del lightbox verticalmente en el centro */
+    z-index: 1000; /* Asegura que el lightbox esté por encima de otros elementos */
+}
 
-        .product-details {
-            margin-top: 20px;
-        }
+.lightbox-content {
+    position: relative; /* Posiciona el contenido del lightbox de forma relativa para el posicionamiento de elementos internos */
+    max-width: 90%; /* Establece un ancho máximo del 90% del viewport para el contenido */
+    max-height: 80%; /* Establece una altura máxima del 80% del viewport para el contenido */
+    display: flex; /* Usa flexbox para alinear el contenido del lightbox */
+    justify-content: center; /* Alinea el contenido horizontalmente en el centro */
+    align-items: center; /* Alinea el contenido verticalmente en el centro */
+}
 
-        .product-details h1 {
-            font-size: 2em;
-            color: #ffffff; /* Color del nombre del producto */
-        }
+.lightbox img {
+    max-width: 100%; /* Establece un ancho máximo del 100% del contenedor del lightbox */
+    max-height: 100%; /* Establece una altura máxima del 100% del contenedor del lightbox */
+    border: 5px solid #ffffff; /* Agrega un borde blanco alrededor de la imagen en el lightbox */
+}
 
-        .product-details p {
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
+.lightbox .close {
+    position: absolute; /* Posiciona el botón de cierre de forma absoluta dentro del lightbox */
+    top: 10px; /* Coloca el botón de cierre 10px desde la parte superior del lightbox */
+    right: 10px; /* Coloca el botón de cierre 10px desde el borde derecho del lightbox */
+    font-size: 2em; /* Establece el tamaño de la fuente del botón de cierre */
+    color: #ffffff; /* Establece el color del texto del botón de cierre a blanco */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón de cierre */
+    background: rgba(0, 0, 0, 0.7); /* Establece el fondo del botón de cierre a negro con opacidad */
+    border-radius: 50%; /* Hace el botón de cierre circular */
+    padding: 5px; /* Agrega un padding alrededor del texto del botón de cierre */
+    transition: background 0.3s; /* Añade una transición suave para el cambio de fondo del botón de cierre */
+}
 
-        .product-details .btn {
-            background-color: #212222; /* Azul oscuro para el botón de ficha técnica */
-            color: #ffffff; /* Color del texto del botón de ficha técnica */
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s;
-        }
+.lightbox .close:hover {
+    background: rgba(0, 0, 0, 0.9); /* Cambia el fondo del botón de cierre a negro más opaco cuando se pasa el cursor sobre él */
+}
 
-        .product-details .btn:hover {
-            background-color: #000000; /* Negro para el hover */
-        }
-
-        /* Lightbox styles */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 80%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox img {
-            max-width: 100%;
-            max-height: 100%;
-            border: 5px solid #ffffff; /* Borde blanco para la imagen en el lightbox */
-        }
-
-        .lightbox .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 2em;
-            color: #ffffff;
-            cursor: pointer;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 50%;
-            padding: 5px;
-            transition: background 0.3s;
-        }
-
-        .lightbox .close:hover {
-            background: rgba(0, 0, 0, 0.9);
-        }
-
-        #matrixCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1; /* Asegura que el canvas esté detrás del contenido */
-        }
-
-    
+#matrixCanvas {
+    position: fixed; /* Posiciona el canvas de Matrix de forma fija para que se mantenga en su lugar durante el scroll */
+    top: 0; /* Coloca el canvas en la parte superior del contenedor */
+    left: 0; /* Coloca el canvas en el borde izquierdo del contenedor */
+    width: 100%; /* Establece el ancho del canvas al 100% del viewport */
+    height: 100%; /* Establece la altura del canvas al 100% del viewport */
+    z-index: 1; /* Asegura que el canvas esté detrás del contenido */
+}

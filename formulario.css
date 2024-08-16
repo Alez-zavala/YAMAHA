@@ -5,7 +5,7 @@
         padding: 0;
         background-color: #000000; /* Fondo negro */
         color: #ffffff; /* Color de texto blanco */
-        overflow: hidden; /* Evita el scroll debido a la animación */
+        /*overflow: hidden;  Evita el scroll debido a la animación */
     }
 
     header {
